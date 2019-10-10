@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,7 +21,8 @@ namespace Lab5_UserSystem
     /// </summary>
     public partial class MainWindow : Window
     {
-        List<User> userList = new List<User>();
+        ObservableCollection<User> users = new ObservableCollection<User>();
+        ObservableCollection<User> admins = new ObservableCollection<User>();
         public MainWindow()
         {
             InitializeComponent();
@@ -30,9 +32,22 @@ namespace Lab5_UserSystem
         {
             string userName = userNameBox.Text;
             string userEmail = userEmailBox.Text;
-            userList.Add(new User(userName, userEmail));
-            userListBox.ItemsSource = userList;
-            userListBox.Items.Refresh();
+            User user = new User(userName, userEmail);
+            users.Add(user);
+        }
+
+       
+        private void UserListBoxInitialized(object sender, EventArgs e)
+        {
+            userListBox.ItemsSource = users;
+            userListBox.DisplayMemberPath = "UserName";
+        }
+
+      
+        private void AdminListBoxInitialized(object sender, EventArgs e)
+        {
+            adminListBox.ItemsSource = admins;
+            userListBox.DisplayMemberPath = "UserName";
         }
     }
 }
