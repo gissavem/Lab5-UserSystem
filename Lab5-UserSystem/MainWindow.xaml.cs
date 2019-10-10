@@ -32,6 +32,7 @@ namespace Lab5_UserSystem
             string userEmail = userEmailBox.Text;
             userList.Add(new User(userName, userEmail));
             userListBox.ItemsSource = userList;
+            userListBox.Items.Refresh();
         }
     }
 }
