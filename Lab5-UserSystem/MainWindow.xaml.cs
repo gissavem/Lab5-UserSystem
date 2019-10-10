@@ -26,6 +26,7 @@ namespace Lab5_UserSystem
         public MainWindow()
         {
             InitializeComponent();
+            
         }
 
         private void AddUserButtonClick(object sender, RoutedEventArgs e)
@@ -50,6 +51,19 @@ namespace Lab5_UserSystem
         {
             adminListBox.ItemsSource = admins;
             adminListBox.DisplayMemberPath = "UserName";
+        }
+        private void PromoteUserToAdminButtonClick(object sender, RoutedEventArgs e)
+        {
+            foreach (var user in users)
+            {
+                if (user.Equals(userListBox.SelectedItem))
+                {
+                    user.IsAdmin = true;
+                    users.Remove(user);
+                    admins.Add(user);
+                    return;
+                }
+            }
         }
 
         private void DemoteAdminToUserButtonClick(object sender, RoutedEventArgs e)
