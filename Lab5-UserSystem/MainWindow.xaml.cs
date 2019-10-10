@@ -87,7 +87,8 @@ namespace Lab5_UserSystem
 
         private void UserListBoxLostFocus(object sender, RoutedEventArgs e)
         {
-            promoteUserToAdminButton.IsEnabled = false;
+            //promoteUserToAdminButton.IsEnabled = false;
         }
+
     }
 }
