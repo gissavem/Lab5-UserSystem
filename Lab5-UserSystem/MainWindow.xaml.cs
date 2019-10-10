@@ -30,8 +30,10 @@ namespace Lab5_UserSystem
 
         private void AddUserButtonClick(object sender, RoutedEventArgs e)
         {
-            string userName = userNameBox.Text;
-            string userEmail = userEmailBox.Text;
+            string userName = userNameBox.Text.Trim();
+            string userEmail = userEmailBox.Text.Trim();
+            if (userName == null || userName == "" || userEmail == null || userEmail == "")
+                return;
             User user = new User(userName, userEmail);
             users.Add(user);
         }
