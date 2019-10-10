@@ -10,7 +10,7 @@
         <TextBox x:Name="userNameBox" HorizontalAlignment="Left" Height="24" Margin="63,78,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="145"/>
         <Label x:Name="userName" Content="Username" HorizontalAlignment="Left" Margin="63,52,0,0" VerticalAlignment="Top" Width="145"/>
         <Label x:Name="emailLabel" Content="Email" HorizontalAlignment="Left" Margin="63,116,0,0" VerticalAlignment="Top" Width="145"/>
-        <ListBox x:Name="userListBox" HorizontalAlignment="Left" Height="168" Margin="263,78,0,0" VerticalAlignment="Top" Width="145" Initialized="UserListBoxInitialized"/>
+        <ListBox x:Name="userListBox" HorizontalAlignment="Left" Height="168" Margin="263,78,0,0" VerticalAlignment="Top" Width="145" Initialized="UserListBoxInitialized" SelectionChanged="UserListBoxSelectionChanged" LostFocus="UserListBoxLostFocus"/>
         <ListBox x:Name="adminListBox" HorizontalAlignment="Left" Height="168" Margin="490,78,0,0" VerticalAlignment="Top" Width="145" Initialized="AdminListBoxInitialized"/>
         <Label x:Name="userBoxLabel" Content="Users" HorizontalAlignment="Left" Margin="263,52,0,0" VerticalAlignment="Top" Width="145"/>
         <Label x:Name="adminBoxLabel" Content="Admins" HorizontalAlignment="Left" Margin="490,52,0,0" VerticalAlignment="Top" Width="145"/>

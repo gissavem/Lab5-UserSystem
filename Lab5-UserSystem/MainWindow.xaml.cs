@@ -65,5 +65,15 @@ namespace Lab5_UserSystem
                 }
             }
         }
+
+        private void UserListBoxSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            promoteUserToAdminButton.IsEnabled = true;
+        }
+
+        private void UserListBoxLostFocus(object sender, RoutedEventArgs e)
+        {
+            promoteUserToAdminButton.IsEnabled = false;
+        }
     }
 }
