@@ -7,20 +7,20 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <TextBox HorizontalAlignment="Left" Height="24" Margin="63,78,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="145"/>
+        <TextBox x:Name="userNameBox" HorizontalAlignment="Left" Height="24" Margin="63,78,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="145"/>
         <Label x:Name="userName" Content="Username" HorizontalAlignment="Left" Margin="63,52,0,0" VerticalAlignment="Top" Width="145"/>
         <Label x:Name="emailLabel" Content="Email" HorizontalAlignment="Left" Margin="63,116,0,0" VerticalAlignment="Top" Width="145"/>
-        <ListBox HorizontalAlignment="Left" Height="168" Margin="263,78,0,0" VerticalAlignment="Top" Width="145"/>
-        <ListBox HorizontalAlignment="Left" Height="168" Margin="490,78,0,0" VerticalAlignment="Top" Width="145"/>
+        <ListBox x:Name="userList" HorizontalAlignment="Left" Height="168" Margin="263,78,0,0" VerticalAlignment="Top" Width="145"/>
+        <ListBox x:Name="adminList" HorizontalAlignment="Left" Height="168" Margin="490,78,0,0" VerticalAlignment="Top" Width="145"/>
         <Label x:Name="userBoxLabel" Content="Users" HorizontalAlignment="Left" Margin="263,52,0,0" VerticalAlignment="Top" Width="145"/>
         <Label x:Name="adminBoxLabel" Content="Admins" HorizontalAlignment="Left" Margin="490,52,0,0" VerticalAlignment="Top" Width="145"/>
-        <Button x:Name="addUserButtom" Content="Add User" HorizontalAlignment="Left" Margin="63,186,0,0" VerticalAlignment="Top" Width="145"/>
-        <Button x:Name="changeDetailsButtom" Content="Change Details" HorizontalAlignment="Left" Margin="63,226,0,0" VerticalAlignment="Top" Width="145"/>
-        <Button x:Name="promoteUserToAdminButtom" Content="Promote user to admin" HorizontalAlignment="Left" Margin="263,264,0,0" VerticalAlignment="Top" Width="145"/>
-        <Button x:Name="demoteAdminToUserButtom" Content="Demote admin to user" HorizontalAlignment="Left" Margin="490,264,0,0" VerticalAlignment="Top" Width="145"/>
-        <TextBox HorizontalAlignment="Left" Height="24" Margin="63,142,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="145"/>
-        <Label x:Name="userInfo" Content="User info" HorizontalAlignment="Left" Margin="63,264,0,0" VerticalAlignment="Top" Width="145" Height="29"/>
-        <Button x:Name="removeUserButtom" Content="Remote user/admin" HorizontalAlignment="Left" Margin="379,302,0,0" VerticalAlignment="Top" Width="145"/>
+        <Button x:Name="addUserButton" Content="Add User" HorizontalAlignment="Left" Margin="63,186,0,0" VerticalAlignment="Top" Width="145"/>
+        <Button x:Name="changeDetailsButton" Content="Change Details" HorizontalAlignment="Left" Margin="63,226,0,0" VerticalAlignment="Top" Width="145"/>
+        <Button x:Name="promoteUserToAdminButton" Content="Promote user to admin" HorizontalAlignment="Left" Margin="263,264,0,0" VerticalAlignment="Top" Width="145"/>
+        <Button x:Name="demoteAdminToUserButton" Content="Demote admin to user" HorizontalAlignment="Left" Margin="490,264,0,0" VerticalAlignment="Top" Width="145"/>
+        <TextBox x:Name="emailBox" HorizontalAlignment="Left" Height="24" Margin="63,142,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="145"/>
+        <Label x:Name="userInfoLabel" Content="User info" HorizontalAlignment="Left" Margin="63,264,0,0" VerticalAlignment="Top" Width="145" Height="29"/>
+        <Button x:Name="removeUserButton" Content="Remove user/admin" HorizontalAlignment="Left" Margin="379,302,0,0" VerticalAlignment="Top" Width="145"/>
 
     </Grid>
 </Window>
