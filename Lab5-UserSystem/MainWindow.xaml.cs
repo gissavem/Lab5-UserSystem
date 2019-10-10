@@ -51,5 +51,19 @@ namespace Lab5_UserSystem
             adminListBox.ItemsSource = admins;
             adminListBox.DisplayMemberPath = "UserName";
         }
+
+        private void DemoteAdminToUserButtonClick(object sender, RoutedEventArgs e)
+        {
+            foreach (User user in admins)
+            {
+                if (user.Equals(adminListBox.SelectedItem))
+                {
+                    user.IsAdmin = false;
+                    admins.Remove(user);
+                    users.Add(user);
+                    return;
+                }
+            }
+        }
     }
 }
