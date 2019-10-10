@@ -1,7 +1,7 @@
 ﻿
 namespace Lab5_UserSystem
 {
-    class User
+    public class User
     {
     }
 }

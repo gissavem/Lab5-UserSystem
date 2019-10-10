@@ -20,9 +20,19 @@ namespace Lab5_UserSystem
     /// </summary>
     public partial class MainWindow : Window
     {
+        List<User> userList = new List<User>();
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void AddUserButtonClick(object sender, RoutedEventArgs e)
+        {
+            string userName = userNameBox.Text;
+            string userEmail = userEmailBox.Text;
+            userList.Add(new User());
+            userListBox.ItemsSource = userList;
+
         }
     }
 }
