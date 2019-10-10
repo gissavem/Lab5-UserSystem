@@ -47,7 +47,7 @@ namespace Lab5_UserSystem
         private void AdminListBoxInitialized(object sender, EventArgs e)
         {
             adminListBox.ItemsSource = admins;
-            userListBox.DisplayMemberPath = "UserName";
+            adminListBox.DisplayMemberPath = "UserName";
         }
     }
 }
