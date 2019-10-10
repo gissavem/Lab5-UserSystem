@@ -31,8 +31,10 @@ namespace Lab5_UserSystem
 
         private void AddUserButtonClick(object sender, RoutedEventArgs e)
         {
-            string userName = userNameBox.Text;
-            string userEmail = userEmailBox.Text;
+            string userName = userNameBox.Text.Trim();
+            string userEmail = userEmailBox.Text.Trim();
+            if (userName == null || userName == "" || userEmail == null || userEmail == "")
+                return;
             User user = new User(userName, userEmail);
             users.Add(user);
         }
@@ -59,6 +61,20 @@ namespace Lab5_UserSystem
                     user.IsAdmin = true;
                     users.Remove(user);
                     admins.Add(user);
+                    return;
+                }
+            }
+        }
+
+        private void DemoteAdminToUserButtonClick(object sender, RoutedEventArgs e)
+        {
+            foreach (User user in admins)
+            {
+                if (user.Equals(adminListBox.SelectedItem))
+                {
+                    user.IsAdmin = false;
+                    admins.Remove(user);
+                    users.Add(user);
                     return;
                 }
             }
