@@ -36,7 +36,6 @@ namespace Lab5_UserSystem
             userListBox.UnselectAll();
             adminListBox.UnselectAll();
         }
-
         private void AddUserButtonClick(object sender, RoutedEventArgs e)
         {
             string userName = userNameBox.Text.Trim();
@@ -46,16 +45,12 @@ namespace Lab5_UserSystem
             User user = new User(userName, userEmail);
             users.Add(user);
             ClearTextBoxes();
-        }
-
-       
+        }      
         private void UserListBoxInitialized(object sender, EventArgs e)
         {
             userListBox.ItemsSource = users;
             userListBox.DisplayMemberPath = "UserName";
         }
-
-      
         private void AdminListBoxInitialized(object sender, EventArgs e)
         {
             adminListBox.ItemsSource = admins;
@@ -75,7 +70,6 @@ namespace Lab5_UserSystem
                 }
             }
         }
-
         private void DemoteAdminToUserButtonClick(object sender, RoutedEventArgs e)
         {
             foreach (User user in admins)
@@ -90,21 +84,37 @@ namespace Lab5_UserSystem
                 }
             }
         }
-
+        private void EnableButtons(bool enableButton)
+        {
+            if (!enableButton)
+            {
+                demoteAdminToUserButton.IsEnabled = enableButton;
+                promoteUserToAdminButton.IsEnabled = enableButton;
+                removeUserButton.IsEnabled = enableButton;
+                changeUserDetailsButton.IsEnabled = enableButton;
+                return;
+            }
+            if (userListBox.SelectedItem != null)
+            {
+                promoteUserToAdminButton.IsEnabled = enableButton;
+            }
+            else if (adminListBox.SelectedItem != null)
+            {
+                demoteAdminToUserButton.IsEnabled = enableButton;
+            }            
+            removeUserButton.IsEnabled = enableButton;
+            changeUserDetailsButton.IsEnabled = enableButton;
+        }
         private void UserListBoxSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (userListBox.SelectedItem == null)
             {
-                promoteUserToAdminButton.IsEnabled = false;
-                removeUserButton.IsEnabled = false;
-                changeUserDetailsButton.IsEnabled = false;
+                EnableButtons(false);
             }
             else
             {
                 adminListBox.UnselectAll();
-                promoteUserToAdminButton.IsEnabled = true;
-                removeUserButton.IsEnabled = true;
-                changeUserDetailsButton.IsEnabled = true;
+                EnableButtons(true);
                 User selectedUser = (User)userListBox.SelectedItem;
                 string userName = selectedUser.UserName;
                 string userEmail = selectedUser.UserEmail;
@@ -112,21 +122,16 @@ namespace Lab5_UserSystem
                 userInfoLabel.Content = $"Username: {userName}\nUser email: {userEmail}\nIs an admin: {isAdmin}";
             }
         }
-
         private void AdminListBoxSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (adminListBox.SelectedItem == null)
             {
-                demoteAdminToUserButton.IsEnabled = false;
-                removeUserButton.IsEnabled = false;
-                changeUserDetailsButton.IsEnabled = false;
+                EnableButtons(false);               
             }
             else
             {
                 userListBox.UnselectAll();
-                demoteAdminToUserButton.IsEnabled = true;
-                removeUserButton.IsEnabled = true;
-                changeUserDetailsButton.IsEnabled = true;
+                EnableButtons(true);
                 User selectedUser = (User)adminListBox.SelectedItem;
                 string userName = selectedUser.UserName;
                 string userEmail = selectedUser.UserEmail;
@@ -134,7 +139,6 @@ namespace Lab5_UserSystem
                 userInfoLabel.Content = $"Username: {userName}\nUser email: {userEmail}\nIs an admin: {isAdmin}";
             }
         }
-
         private void ChangeUserDetailsButtonClick(object sender, RoutedEventArgs e)
         {
             string userName = userNameBox.Text.Trim();
