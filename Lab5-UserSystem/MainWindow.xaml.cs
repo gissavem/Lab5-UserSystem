@@ -124,11 +124,10 @@ namespace Lab5_UserSystem
             }
         }
 
-<<<<<<< HEAD
         private void changeUserDetailsButton_Click(object sender, RoutedEventArgs e)
         {
 
-=======
+        }
         private void RemoveUserButtonClick(object sender, RoutedEventArgs e)
         {
             if (userListBox.SelectedItem != null)
@@ -141,7 +140,6 @@ namespace Lab5_UserSystem
                 var selectedUser = (User)adminListBox.SelectedItem;
                 admins.Remove(selectedUser);
             }
->>>>>>> 6e9285a524c5eeac521a1790338d0f1ca9f3dc59
         }
     }
 }
