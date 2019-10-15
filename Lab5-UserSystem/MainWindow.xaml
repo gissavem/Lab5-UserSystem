@@ -19,7 +19,7 @@
         <Button x:Name="promoteUserToAdminButton" Content="Promote user to admin" HorizontalAlignment="Left" Margin="263,264,0,0" VerticalAlignment="Top" Width="145" IsEnabled="False" Click="PromoteUserToAdminButtonClick"/>
         <Button x:Name="demoteAdminToUserButton" Content="Demote admin to user" HorizontalAlignment="Left" Margin="490,264,0,0" VerticalAlignment="Top" Width="145" Click="DemoteAdminToUserButtonClick" IsEnabled="False"/>
         <TextBox x:Name="userEmailBox" HorizontalAlignment="Left" Height="24" Margin="63,142,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="145"/>
-        <Label x:Name="userInfoLabel" Content="User info" HorizontalAlignment="Left" Margin="63,264,0,0" VerticalAlignment="Top" Width="145" Height="29"/>
+        <Label x:Name="userInfoLabel" Content="" HorizontalAlignment="Left" Margin="63,302,0,0" VerticalAlignment="Top" Width="311" Height="83" FontSize="16"/>
         <Button x:Name="removeUserButton" Content="Remove user/admin" HorizontalAlignment="Left" Margin="379,302,0,0" VerticalAlignment="Top" Width="145" IsEnabled="False" Click="RemoveUserButtonClick"/>
 
     </Grid>

@@ -37,6 +37,8 @@ namespace Lab5_UserSystem
                 return;
             User user = new User(userName, userEmail);
             users.Add(user);
+            userNameBox.Text = "";
+            userEmailBox.Text = "";
         }
 
        
@@ -61,7 +63,8 @@ namespace Lab5_UserSystem
                     user.IsAdmin = true;
                     users.Remove(user);
                     admins.Add(user);
-                    
+                    userInfoLabel.Content = "";
+
                     return;
                 }
             }
@@ -76,7 +79,8 @@ namespace Lab5_UserSystem
                     user.IsAdmin = false;
                     admins.Remove(user);
                     users.Add(user);
-                    
+                    userInfoLabel.Content = "";
+
                     return;
                 }
             }
@@ -98,8 +102,11 @@ namespace Lab5_UserSystem
                 removeUserButton.IsEnabled = true;
                 changeUserDetailsButton.IsEnabled = true;
                 User selectedUser = (User)userListBox.SelectedItem;
-                userEmailBox.Text = selectedUser.UserEmail;
-                userNameBox.Text = selectedUser.UserName;
+                string userName = selectedUser.UserName;
+                string userEmail = selectedUser.UserEmail;
+                bool isAdmin = selectedUser.IsAdmin;
+                userInfoLabel.Content = $"Username: {userName}\nUser email: {userEmail}\nIs an admin: {isAdmin}";
+
             }
         }
 
@@ -119,17 +126,20 @@ namespace Lab5_UserSystem
                 removeUserButton.IsEnabled = true;
                 changeUserDetailsButton.IsEnabled = true;
                 User selectedUser = (User)adminListBox.SelectedItem;
-                userEmailBox.Text = selectedUser.UserEmail;
-                userNameBox.Text = selectedUser.UserName;
+                string userName = selectedUser.UserName;
+                string userEmail = selectedUser.UserEmail;
+                bool isAdmin = selectedUser.IsAdmin;
+                userInfoLabel.Content = $"Username: {userName}\nUser email: {userEmail}\nIs an admin: {isAdmin}";
             }
         }
 
         private void ChangeUserDetailsButtonClick(object sender, RoutedEventArgs e)
         {
-                string userName = userNameBox.Text.Trim();
-                string userEmail = userEmailBox.Text.Trim();
-                if (userName == null || userName == "" || userEmail == null || userEmail == "")
-                    return;
+            string userName = userNameBox.Text.Trim();
+            string userEmail = userEmailBox.Text.Trim();
+            if (userName == null || userName == "" || userEmail == null || userEmail == "")
+                return;
+
             if (userListBox.SelectedItem != null)
             {
                 var selectedUser = (User)userListBox.SelectedItem;
@@ -146,6 +156,12 @@ namespace Lab5_UserSystem
                 admins[admins.IndexOf((User)adminListBox.SelectedItem)] = selectedUser;
                 adminListBox.Items.Refresh();
             }
+            userNameBox.Text = "";
+            userEmailBox.Text = "";
+            userInfoLabel.Content = "";
+            userListBox.UnselectAll();
+            adminListBox.UnselectAll();
+
         }
         private void RemoveUserButtonClick(object sender, RoutedEventArgs e)
         {
@@ -153,11 +169,13 @@ namespace Lab5_UserSystem
             {
                 var selectedUser = (User)userListBox.SelectedItem;
                 users.Remove(selectedUser);
+                userInfoLabel.Content = "";
             }
             if (adminListBox.SelectedItem != null)
             {
                 var selectedUser = (User)adminListBox.SelectedItem;
                 admins.Remove(selectedUser);
+                userInfoLabel.Content = "";
             }
         }
     }
