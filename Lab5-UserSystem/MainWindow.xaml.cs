@@ -120,5 +120,18 @@ namespace Lab5_UserSystem
             }
         }
 
+        private void RemoveUserButtonClick(object sender, RoutedEventArgs e)
+        {
+            if (userListBox.SelectedItem != null)
+            {
+                var selectedUser = (User)userListBox.SelectedItem;
+                users.Remove(selectedUser);
+            }
+            if (adminListBox.SelectedItem != null)
+            {
+                var selectedUser = (User)adminListBox.SelectedItem;
+                admins.Remove(selectedUser);
+            }
+        }
     }
 }
