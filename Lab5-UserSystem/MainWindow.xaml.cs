@@ -100,9 +100,24 @@ namespace Lab5_UserSystem
             }
         }
 
-        private void UserListBoxLostFocus(object sender, RoutedEventArgs e)
+        private void AdminListBoxSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            //promoteUserToAdminButton.IsEnabled = false;
+            if (adminListBox.SelectedItem == null)
+            {
+                demoteAdminToUserButton.IsEnabled = false;
+                removeUserButton.IsEnabled = false;
+                changeUserDetailsButton.IsEnabled = false;
+
+            }
+            else
+            {
+                demoteAdminToUserButton.IsEnabled = true;
+                removeUserButton.IsEnabled = true;
+                changeUserDetailsButton.IsEnabled = true;
+                User selectedUser = (User)adminListBox.SelectedItem;
+                userEmailBox.Text = selectedUser.UserEmail;
+                userNameBox.Text = selectedUser.UserName;
+            }
         }
 
     }
