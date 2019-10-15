@@ -54,7 +54,7 @@ namespace Lab5_UserSystem
         }
         private void PromoteUserToAdminButtonClick(object sender, RoutedEventArgs e)
         {
-            foreach (var user in users)
+            foreach (User user in users)
             {
                 if (user.Equals(userListBox.SelectedItem))
                 {
@@ -94,9 +94,9 @@ namespace Lab5_UserSystem
                 promoteUserToAdminButton.IsEnabled = true;
                 removeUserButton.IsEnabled = true;
                 changeUserDetailsButton.IsEnabled = true;
-                var temp = (User)userListBox.SelectedItem;
-                userEmailBox.Text = temp.UserEmail;
-                userNameBox.Text = temp.UserName;
+                User selectedUser = (User)userListBox.SelectedItem;
+                userEmailBox.Text = selectedUser.UserEmail;
+                userNameBox.Text = selectedUser.UserName;
             }
         }
 
