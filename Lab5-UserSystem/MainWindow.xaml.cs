@@ -14,7 +14,16 @@ namespace Lab5_UserSystem
         ObservableCollection<User> admins = new ObservableCollection<User>();
         public MainWindow()
         {
-            InitializeComponent();            
+            InitializeComponent();
+            InitializeUserListBox();
+            InitializeAdminListBox();            
+            addUserButton.Click += OnAddUserButtonClick;
+            changeUserDetailsButton.Click += OnChangeUserDetailsButtonClick;
+            promoteUserToAdminButton.Click += OnPromoteUserButtonClick;
+            demoteAdminToUserButton.Click += OnDemoteAdminButtonClick;
+            removeUserButton.Click += OnRemoveUserButtonClick;
+            adminListBox.SelectionChanged += AdminListBoxSelectionChanged;
+            userListBox.SelectionChanged += UserListBoxSelectionChanged;
         }
         private void ClearTextBoxes()
         {
@@ -52,12 +61,12 @@ namespace Lab5_UserSystem
             bool isAdmin = selectedUser.IsAdmin;
             userInfoLabel.Content = $"Username: {userName}\nUser email: {userEmail}\nIs an admin: {isAdmin}";
         }
-        private void UserListBoxInitialized(object sender, EventArgs e)
+        private void InitializeUserListBox()
         {
             userListBox.ItemsSource = users;
             userListBox.DisplayMemberPath = "UserName";
         }
-        private void AdminListBoxInitialized(object sender, EventArgs e)
+        private void InitializeAdminListBox()
         {
             adminListBox.ItemsSource = admins;
             adminListBox.DisplayMemberPath = "UserName";
