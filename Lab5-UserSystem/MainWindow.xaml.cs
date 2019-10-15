@@ -124,9 +124,28 @@ namespace Lab5_UserSystem
             }
         }
 
-        private void changeUserDetailsButton_Click(object sender, RoutedEventArgs e)
+        private void ChangeUserDetailsButtonClick(object sender, RoutedEventArgs e)
         {
-
+                string userName = userNameBox.Text.Trim();
+                string userEmail = userEmailBox.Text.Trim();
+                if (userName == null || userName == "" || userEmail == null || userEmail == "")
+                    return;
+            if (userListBox.SelectedItem != null)
+            {
+                var selectedUser = (User)userListBox.SelectedItem;
+                selectedUser.UserName = userName;
+                selectedUser.UserEmail = userEmail;
+                users[users.IndexOf((User)userListBox.SelectedItem)] = selectedUser;
+                userListBox.Items.Refresh();                
+            }
+            else if (adminListBox.SelectedItem != null)
+            {
+                var selectedUser = (User)adminListBox.SelectedItem;
+                selectedUser.UserName = userName;
+                selectedUser.UserEmail = userEmail;
+                admins[admins.IndexOf((User)adminListBox.SelectedItem)] = selectedUser;
+                adminListBox.Items.Refresh();
+            }
         }
         private void RemoveUserButtonClick(object sender, RoutedEventArgs e)
         {
