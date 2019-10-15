@@ -1,18 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Lab5_UserSystem
 {
@@ -117,7 +106,6 @@ namespace Lab5_UserSystem
             string userEmail = userEmailBox.Text.Trim();
             if (userName == null || userName == "" || userEmail == null || userEmail == "")
                 return;
-
             if (userListBox.SelectedItem != null)
             {
                 var selectedUser = (User)userListBox.SelectedItem;
@@ -133,6 +121,7 @@ namespace Lab5_UserSystem
                 selectedUser.UserEmail = userEmail;
                 admins[admins.IndexOf((User)adminListBox.SelectedItem)] = selectedUser;
                 adminListBox.Items.Refresh();
+
             }
             ClearTextBoxes();
         }
