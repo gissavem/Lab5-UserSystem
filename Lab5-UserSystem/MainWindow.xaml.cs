@@ -82,7 +82,22 @@ namespace Lab5_UserSystem
 
         private void UserListBoxSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            promoteUserToAdminButton.IsEnabled = true;
+            if (userListBox.SelectedItem == null)
+            {
+                promoteUserToAdminButton.IsEnabled = false;
+                removeUserButton.IsEnabled = false;
+                changeUserDetailsButton.IsEnabled = false;
+
+            }
+            else
+            {
+                promoteUserToAdminButton.IsEnabled = true;
+                removeUserButton.IsEnabled = true;
+                changeUserDetailsButton.IsEnabled = true;
+                var temp = (User)userListBox.SelectedItem;
+                userEmailBox.Text = temp.UserEmail;
+                userNameBox.Text = temp.UserName;
+            }
         }
 
         private void UserListBoxLostFocus(object sender, RoutedEventArgs e)
