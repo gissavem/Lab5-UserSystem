@@ -28,7 +28,7 @@ namespace Lab5_UserSystem
             InitializeComponent();
             
         }
-        public void ClearTextBoxes()
+        private void ClearTextBoxes()
         {
             userNameBox.Text = "";
             userEmailBox.Text = "";
@@ -116,10 +116,7 @@ namespace Lab5_UserSystem
                 adminListBox.UnselectAll();
                 EnableButtons(true);
                 User selectedUser = (User)userListBox.SelectedItem;
-                string userName = selectedUser.UserName;
-                string userEmail = selectedUser.UserEmail;
-                bool isAdmin = selectedUser.IsAdmin;
-                userInfoLabel.Content = $"Username: {userName}\nUser email: {userEmail}\nIs an admin: {isAdmin}";
+                PrintUserInfo(selectedUser);
             }
         }
         private void AdminListBoxSelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -133,12 +130,18 @@ namespace Lab5_UserSystem
                 userListBox.UnselectAll();
                 EnableButtons(true);
                 User selectedUser = (User)adminListBox.SelectedItem;
-                string userName = selectedUser.UserName;
-                string userEmail = selectedUser.UserEmail;
-                bool isAdmin = selectedUser.IsAdmin;
-                userInfoLabel.Content = $"Username: {userName}\nUser email: {userEmail}\nIs an admin: {isAdmin}";
+                PrintUserInfo(selectedUser);
             }
         }
+
+        private void PrintUserInfo(User selectedUser)
+        {
+            string userName = selectedUser.UserName;
+            string userEmail = selectedUser.UserEmail;
+            bool isAdmin = selectedUser.IsAdmin;
+            userInfoLabel.Content = $"Username: {userName}\nUser email: {userEmail}\nIs an admin: {isAdmin}";
+        }
+
         private void ChangeUserDetailsButtonClick(object sender, RoutedEventArgs e)
         {
             string userName = userNameBox.Text.Trim();
