@@ -61,6 +61,7 @@ namespace Lab5_UserSystem
                     user.IsAdmin = true;
                     users.Remove(user);
                     admins.Add(user);
+                    
                     return;
                 }
             }
@@ -75,6 +76,7 @@ namespace Lab5_UserSystem
                     user.IsAdmin = false;
                     admins.Remove(user);
                     users.Add(user);
+                    
                     return;
                 }
             }
@@ -91,6 +93,7 @@ namespace Lab5_UserSystem
             }
             else
             {
+                adminListBox.UnselectAll();
                 promoteUserToAdminButton.IsEnabled = true;
                 removeUserButton.IsEnabled = true;
                 changeUserDetailsButton.IsEnabled = true;
@@ -111,6 +114,7 @@ namespace Lab5_UserSystem
             }
             else
             {
+                userListBox.UnselectAll();
                 demoteAdminToUserButton.IsEnabled = true;
                 removeUserButton.IsEnabled = true;
                 changeUserDetailsButton.IsEnabled = true;
@@ -120,5 +124,9 @@ namespace Lab5_UserSystem
             }
         }
 
+        private void changeUserDetailsButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
