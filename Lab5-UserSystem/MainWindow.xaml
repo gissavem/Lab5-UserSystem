@@ -14,13 +14,13 @@
         <ListBox x:Name="adminListBox" HorizontalAlignment="Left" Height="168" Margin="490,78,0,0" VerticalAlignment="Top" Width="145" Initialized="AdminListBoxInitialized" SelectionChanged="AdminListBoxSelectionChanged"/>
         <Label x:Name="userBoxLabel" Content="Users" HorizontalAlignment="Left" Margin="263,52,0,0" VerticalAlignment="Top" Width="145"/>
         <Label x:Name="adminBoxLabel" Content="Admins" HorizontalAlignment="Left" Margin="490,52,0,0" VerticalAlignment="Top" Width="145"/>
-        <Button x:Name="addUserButton" Content="Add User" HorizontalAlignment="Left" Margin="63,186,0,0" VerticalAlignment="Top" Width="145" Click="AddUserButtonClick"/>
-        <Button x:Name="changeUserDetailsButton" Content="Change Details" HorizontalAlignment="Left" Margin="63,226,0,0" VerticalAlignment="Top" Width="145" IsEnabled="False" Click="ChangeUserDetailsButtonClick"/>
-        <Button x:Name="promoteUserToAdminButton" Content="Promote user to admin" HorizontalAlignment="Left" Margin="263,264,0,0" VerticalAlignment="Top" Width="145" IsEnabled="False" Click="PromoteUserToAdminButtonClick"/>
-        <Button x:Name="demoteAdminToUserButton" Content="Demote admin to user" HorizontalAlignment="Left" Margin="490,264,0,0" VerticalAlignment="Top" Width="145" Click="DemoteAdminToUserButtonClick" IsEnabled="False"/>
+        <Button x:Name="addUserButton" Content="Add User" HorizontalAlignment="Left" Margin="63,186,0,0" VerticalAlignment="Top" Width="145" Click="OnAddUserButtonClick"/>
+        <Button x:Name="changeUserDetailsButton" Content="Change Details" HorizontalAlignment="Left" Margin="63,226,0,0" VerticalAlignment="Top" Width="145" IsEnabled="False" Click="OnChangeUserDetailsButtonClick"/>
+        <Button x:Name="promoteUserToAdminButton" Content="Promote user to admin" HorizontalAlignment="Left" Margin="263,264,0,0" VerticalAlignment="Top" Width="145" IsEnabled="False" Click="OnPromoteUserButtonClick"/>
+        <Button x:Name="demoteAdminToUserButton" Content="Demote admin to user" HorizontalAlignment="Left" Margin="490,264,0,0" VerticalAlignment="Top" Width="145" Click="OnDemoteAdminButtonClick" IsEnabled="False"/>
         <TextBox x:Name="userEmailBox" HorizontalAlignment="Left" Height="24" Margin="63,142,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="145"/>
         <Label x:Name="userInfoLabel" Content="" HorizontalAlignment="Left" Margin="63,302,0,0" VerticalAlignment="Top" Width="311" Height="83" FontSize="16"/>
-        <Button x:Name="removeUserButton" Content="Remove user/admin" HorizontalAlignment="Left" Margin="379,302,0,0" VerticalAlignment="Top" Width="145" IsEnabled="False" Click="RemoveUserButtonClick"/>
+        <Button x:Name="removeUserButton" Content="Remove user/admin" HorizontalAlignment="Left" Margin="379,302,0,0" VerticalAlignment="Top" Width="145" IsEnabled="False" Click="OnRemoveUserButtonClick"/>
 
     </Grid>
 </Window>

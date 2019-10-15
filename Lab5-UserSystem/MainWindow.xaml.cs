@@ -25,8 +25,7 @@ namespace Lab5_UserSystem
         ObservableCollection<User> admins = new ObservableCollection<User>();
         public MainWindow()
         {
-            InitializeComponent();
-            
+            InitializeComponent();            
         }
         private void ClearTextBoxes()
         {
@@ -35,54 +34,6 @@ namespace Lab5_UserSystem
             userInfoLabel.Content = "";
             userListBox.UnselectAll();
             adminListBox.UnselectAll();
-        }
-        private void AddUserButtonClick(object sender, RoutedEventArgs e)
-        {
-            string userName = userNameBox.Text.Trim();
-            string userEmail = userEmailBox.Text.Trim();
-            if (userName == null || userName == "" || userEmail == null || userEmail == "")
-                return;
-            User user = new User(userName, userEmail);
-            users.Add(user);
-            ClearTextBoxes();
-        }      
-        private void UserListBoxInitialized(object sender, EventArgs e)
-        {
-            userListBox.ItemsSource = users;
-            userListBox.DisplayMemberPath = "UserName";
-        }
-        private void AdminListBoxInitialized(object sender, EventArgs e)
-        {
-            adminListBox.ItemsSource = admins;
-            adminListBox.DisplayMemberPath = "UserName";
-        }
-        private void PromoteUserToAdminButtonClick(object sender, RoutedEventArgs e)
-        {
-            foreach (User user in users)
-            {
-                if (user.Equals(userListBox.SelectedItem))
-                {
-                    user.IsAdmin = true;
-                    users.Remove(user);
-                    admins.Add(user);
-                    ClearTextBoxes();
-                    return;
-                }
-            }
-        }
-        private void DemoteAdminToUserButtonClick(object sender, RoutedEventArgs e)
-        {
-            foreach (User user in admins)
-            {
-                if (user.Equals(adminListBox.SelectedItem))
-                {
-                    user.IsAdmin = false;
-                    admins.Remove(user);
-                    users.Add(user);
-                    ClearTextBoxes();
-                    return;
-                }
-            }
         }
         private void EnableButtons(bool enableButton)
         {
@@ -104,6 +55,101 @@ namespace Lab5_UserSystem
             }            
             removeUserButton.IsEnabled = enableButton;
             changeUserDetailsButton.IsEnabled = enableButton;
+        }
+        private void PrintUserInfo(User selectedUser)
+        {
+            string userName = selectedUser.UserName;
+            string userEmail = selectedUser.UserEmail;
+            bool isAdmin = selectedUser.IsAdmin;
+            userInfoLabel.Content = $"Username: {userName}\nUser email: {userEmail}\nIs an admin: {isAdmin}";
+        }
+        private void UserListBoxInitialized(object sender, EventArgs e)
+        {
+            userListBox.ItemsSource = users;
+            userListBox.DisplayMemberPath = "UserName";
+        }
+        private void AdminListBoxInitialized(object sender, EventArgs e)
+        {
+            adminListBox.ItemsSource = admins;
+            adminListBox.DisplayMemberPath = "UserName";
+        }
+        private void OnAddUserButtonClick(object sender, RoutedEventArgs e)
+        {
+            string userName = userNameBox.Text.Trim();
+            string userEmail = userEmailBox.Text.Trim();
+            if (userName == null || userName == "" || userEmail == null || userEmail == "")
+                return;
+            User user = new User(userName, userEmail);
+            users.Add(user);
+            ClearTextBoxes();
+        }      
+        private void OnPromoteUserButtonClick(object sender, RoutedEventArgs e)
+        {
+            foreach (User user in users)
+            {
+                if (user.Equals(userListBox.SelectedItem))
+                {
+                    user.IsAdmin = true;
+                    users.Remove(user);
+                    admins.Add(user);
+                    ClearTextBoxes();
+                    return;
+                }
+            }
+        }
+        private void OnDemoteAdminButtonClick(object sender, RoutedEventArgs e)
+        {
+            foreach (User user in admins)
+            {
+                if (user.Equals(adminListBox.SelectedItem))
+                {
+                    user.IsAdmin = false;
+                    admins.Remove(user);
+                    users.Add(user);
+                    ClearTextBoxes();
+                    return;
+                }
+            }
+        }
+        private void OnChangeUserDetailsButtonClick(object sender, RoutedEventArgs e)
+        {
+            string userName = userNameBox.Text.Trim();
+            string userEmail = userEmailBox.Text.Trim();
+            if (userName == null || userName == "" || userEmail == null || userEmail == "")
+                return;
+
+            if (userListBox.SelectedItem != null)
+            {
+                var selectedUser = (User)userListBox.SelectedItem;
+                selectedUser.UserName = userName;
+                selectedUser.UserEmail = userEmail;
+                users[users.IndexOf((User)userListBox.SelectedItem)] = selectedUser;
+                userListBox.Items.Refresh();                
+            }
+            else if (adminListBox.SelectedItem != null)
+            {
+                var selectedUser = (User)adminListBox.SelectedItem;
+                selectedUser.UserName = userName;
+                selectedUser.UserEmail = userEmail;
+                admins[admins.IndexOf((User)adminListBox.SelectedItem)] = selectedUser;
+                adminListBox.Items.Refresh();
+            }
+            ClearTextBoxes();
+        }
+        private void OnRemoveUserButtonClick(object sender, RoutedEventArgs e)
+        {
+            if (userListBox.SelectedItem != null)
+            {
+                var selectedUser = (User)userListBox.SelectedItem;
+                users.Remove(selectedUser);
+                ClearTextBoxes();
+            }
+            if (adminListBox.SelectedItem != null)
+            {
+                var selectedUser = (User)adminListBox.SelectedItem;
+                admins.Remove(selectedUser);
+                ClearTextBoxes();
+            }
         }
         private void UserListBoxSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -131,55 +177,6 @@ namespace Lab5_UserSystem
                 EnableButtons(true);
                 User selectedUser = (User)adminListBox.SelectedItem;
                 PrintUserInfo(selectedUser);
-            }
-        }
-
-        private void PrintUserInfo(User selectedUser)
-        {
-            string userName = selectedUser.UserName;
-            string userEmail = selectedUser.UserEmail;
-            bool isAdmin = selectedUser.IsAdmin;
-            userInfoLabel.Content = $"Username: {userName}\nUser email: {userEmail}\nIs an admin: {isAdmin}";
-        }
-
-        private void ChangeUserDetailsButtonClick(object sender, RoutedEventArgs e)
-        {
-            string userName = userNameBox.Text.Trim();
-            string userEmail = userEmailBox.Text.Trim();
-            if (userName == null || userName == "" || userEmail == null || userEmail == "")
-                return;
-
-            if (userListBox.SelectedItem != null)
-            {
-                var selectedUser = (User)userListBox.SelectedItem;
-                selectedUser.UserName = userName;
-                selectedUser.UserEmail = userEmail;
-                users[users.IndexOf((User)userListBox.SelectedItem)] = selectedUser;
-                userListBox.Items.Refresh();                
-            }
-            else if (adminListBox.SelectedItem != null)
-            {
-                var selectedUser = (User)adminListBox.SelectedItem;
-                selectedUser.UserName = userName;
-                selectedUser.UserEmail = userEmail;
-                admins[admins.IndexOf((User)adminListBox.SelectedItem)] = selectedUser;
-                adminListBox.Items.Refresh();
-            }
-            ClearTextBoxes();
-        }
-        private void RemoveUserButtonClick(object sender, RoutedEventArgs e)
-        {
-            if (userListBox.SelectedItem != null)
-            {
-                var selectedUser = (User)userListBox.SelectedItem;
-                users.Remove(selectedUser);
-                ClearTextBoxes();
-            }
-            if (adminListBox.SelectedItem != null)
-            {
-                var selectedUser = (User)adminListBox.SelectedItem;
-                admins.Remove(selectedUser);
-                ClearTextBoxes();
             }
         }
     }
